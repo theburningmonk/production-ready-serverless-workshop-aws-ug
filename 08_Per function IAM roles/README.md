@@ -28,18 +28,7 @@ plugins:
 
 1. Modify `serverless.yml` and delete the `iamRoleStatements` section
 
-2. Modify `serverless.yml` and give the `get-index` function its own IAM role statements that looks like the following.
-
-**IMPORTANT**: make sure this `iamRoleStatements` is aligned with `environment` and `events`
-
-```yml
-iamRoleStatements:
-  - Effect: Allow
-    Action: execute-api:Invoke
-    Resource: arn:aws:execute-api:#{AWS::Region}:#{AWS::AccountId}:*/*/GET/restaurants
-```
-
-3. Modify `serverless.yml` and give the `get-restaurants` function its own IAM role statements
+2. Modify `serverless.yml` and give the `get-restaurants` function its own IAM role statements
 
 **IMPORTANT**: make sure this `iamRoleStatements` is aligned with `environment` and `events`
 
@@ -53,7 +42,7 @@ iamRoleStatements:
         - Arn
 ```
 
-4. Modify `serverless.yml` and give the `search-restaurants` function its own IAM role statements
+3. Modify `serverless.yml` and give the `search-restaurants` function its own IAM role statements
 
 ```yml
 iamRoleStatements:
@@ -65,7 +54,7 @@ iamRoleStatements:
         - Arn
 ```
 
-5. Modify `serverless.yml` and give the `place-order` function its own IAM role statements
+4. Modify `serverless.yml` and give the `place-order` function its own IAM role statements
 
 ```yml
 iamRoleStatements:
@@ -77,7 +66,7 @@ iamRoleStatements:
         - Arn
 ```
 
-6. Modify `serverless.yml` and give the `notify-restaurant` function its own IAM role statements
+5. Modify `serverless.yml` and give the `notify-restaurant` function its own IAM role statements
 
 ```yml
 iamRoleStatements:
@@ -93,11 +82,11 @@ iamRoleStatements:
       Ref: restaurantNotificationTopic
 ```
 
-7. Deploy the project
+6. Deploy the project
 
 `npm run sls -- deploy`
 
-8. Run the acceptance tests to make sure they're still working
+7. Run the acceptance tests to make sure they're still working
 
 `STAGE=dev REGION=eu-west-1 npm run acceptance`
 
